@@ -1,6 +1,6 @@
 """SQLAlchemy models"""
-from SQLAlchemy import Column, ForeignKey, Integer, String, Float, Date
-from SQLAlchemy.orm import relationship
+from sqlalchemy import Column, ForeignKey, Integer, String, Float, Date
+from sqlalchemy.orm import relationship
 
 from database import Base
 
@@ -44,7 +44,7 @@ class League(Base):
 class Team(Base):
     __tablename__ = "team"
 
-    team_id = Column(Integer, primary_key=Team, index=True)
+    team_id = Column(Integer, primary_key="Team", index=True)
     team_name = Column(String, nullable=False)
     last_changed_date = Column(Date, nullable=False)
 
