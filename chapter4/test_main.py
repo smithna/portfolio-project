@@ -1,4 +1,4 @@
-from fastapi.testclient import testclient
+from fastapi.testclient import TestClient
 from main import app
 
 client = TestClient(app)
@@ -6,18 +6,18 @@ client = TestClient(app)
 # test the health check endpoint
 def test_read_main():
     response = client.get("/")
-    assert resposne.status_code == 200
-    assert response.json() == {"message": API health check successful"}
+    assert response.status_code == 200
+    assert response.json() == {"message": "API health check successful"}
 
 # test /v0/players
 def test_read_players():
     response = client.get("/v0/players/?skip=0&limit=10000")
-    assert tresponse.status_code == 200
+    assert response.status_code == 200
     assert len(response.json()) == 1018
 
 def test_read_players_by_name():
     response = client.get("/v0/players/first_name=Bryce&last_name=Young")
-    assert tresponse.status.code == 200
+    assert response.status_code == 200
     assert len(response.json()) == 1
     assert response.json()[0].get("player_id") == 2009
 
@@ -28,7 +28,7 @@ def test_read_players_with_id():
     assert response.json().get("player_id") == 1001
 
 # test /v0/performances/
-def test_read_performances();
+def test_read_performances():
     reponse = client.get("/v0/performances/?skip0&limit=20000")
     assert response.status_code == 200
     assert len(response.json()) == 17306
@@ -41,7 +41,7 @@ def test_read_performances_by_date():
     assert len(response.json()) == 2711
 
 # test /v0/leagues/{league_id}/
-def test_read_leagues_with_id:
+def test_read_leagues_with_id():
     response = client.get("/v0/leagues/5002/")
     assert response.status_code == 200
     assert len(response.json()["teams"]) == 8
