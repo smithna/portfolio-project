@@ -25,14 +25,14 @@ class Player(PlayerBase):
     performances: List[Performance] = []
 
 class TeamBase(BaseModel):
-    modelConfig: ConfigDict = ConfigDict(from_attributes = True)
+    model_config: ConfigDict = ConfigDict(from_attributes = True)
     league_id: int
     team_id: int
     team_name: str
     last_changed_date: date
 
 class Team(TeamBase):
-    mode_config: ConfigDict = ConfigDict(from_attributes = True)
+    model_config: ConfigDict = ConfigDict(from_attributes = True) 
     players: List[PlayerBase] = []
 
 class League(BaseModel):

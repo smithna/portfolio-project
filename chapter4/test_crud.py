@@ -41,6 +41,22 @@ def test_get_new_performances(db_session):
     performances = crud.get_performances(db_session, skip=0, limit=18000, min_last_changed_date=test_date)
     assert len(performances) == 2711
 
+def test_getLeague(db_session):
+    """Tests that you can get the first league"""
+    league = crud.get_league(db_session, league_id = 5001)
+    assert league.league_id == 5001
+
+def test_get_leagues_by_name(db_session):
+    """Tests that you can get a league by name"""
+    leagues = crud.get_leagues(db_session, league_name="Pigskin Prodigal Fantasy League")
+    assert len(leagues) == 1
+    assert leagues[0].league_id == 5001
+
+def test_get_teams(db_session):
+    """Tests that the count of teams in the database is what is expected"""
+    teams = crud.get_teams(db_session, skip=0, limit = 500)
+    assert len(teams) == 20
+
 #test the count functions
 def test_get_player_counts(db_session):
     player_count = crud.get_player_count(db_session)

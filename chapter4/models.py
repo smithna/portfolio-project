@@ -44,7 +44,7 @@ class League(Base):
 class Team(Base):
     __tablename__ = "team"
 
-    team_id = Column(Integer, primary_key="Team", index=True)
+    team_id = Column(Integer, primary_key=True, index=True)
     team_name = Column(String, nullable=False)
     last_changed_date = Column(Date, nullable=False)
 

@@ -36,7 +36,7 @@ def read_players(skip: int = 0,
                 last_name=last_name)
     return players
 
-@app.get("v0/players/{player_id}", response_model=schemas.Player)
+@app.get("/v0/players/{player_id}", response_model=schemas.Player)
 def read_player(player_id: int,
                 db: Session = Depends(get_db)):
     player = crud.get_player(db,
@@ -89,6 +89,7 @@ def read_teams(skip: int = 0,
                 min_last_changed_date=minimum_last_changed_date,
                 team_name=team_name,
                 league_id=league_id)
+    return teams
 
 @app.get("/v0/counts", response_model=schemas.Counts)
 def get_count(db: Session = Depends(get_db)):
