@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = setuptools.build_meta"
+
+[project]
+name = "swcpy"
+version = "0.0.1"
+authors = [
+    { name=="[Nathan Smith]"},
+]
+descripiton = "Example SDK from Hands-On API Book for AI and Data Science"
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operation System :: OS Independent",
+]
+dependencies = [
+    'pytest>=8.1',
+    'https>=0.27.0',
+]
